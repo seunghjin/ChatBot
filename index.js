@@ -20,7 +20,7 @@ async function main() {
 
     
     while(true) {
-        const userInput = readlineSync.question(colors.green('User: '));
+        const userInput = readlineSync.question(colors.green('You: '));
 
         try {
             const messages = chatHistory.map(([role, content]) => ({role, content}))
@@ -35,11 +35,11 @@ async function main() {
             const completionText = completion.data.choices[0].message.content;
 
             if(userInput.toLowerCase() === 'exit') {
-                console.log(colors.blue('Bot: ') + completionText);
+                console.log(colors.blue('Chatter: ') + completionText);
                 return;
             }
 
-            console.log(colors.blue('Bot: ') + completionText);
+            console.log(colors.blue('Chatter: ') + completionText);
             chatHistory.push(['user', userInput]);
             chatHistory.push(['assistant', completionText]);
         
